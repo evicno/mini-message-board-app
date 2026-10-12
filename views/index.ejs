@@ -3,12 +3,16 @@
     <link rel="stylesheet" href="/styles.css" />
     <title>Mini Message Board</title>
   </head>
+  <body>
     <h1><%= title %></h1>
     <ul>
-     <% messages.forEach((message) => { %>
+     <% messages.forEach((message, index) => { %>
         <h2>From: <%= message.user %></h2>
         <p>Message: <%= message.text %></p>
         <p>Added: <%= message.added %></p>
+            <a href="/message/<%= index%>">
+      <button type="button">Message details</button>
+    </a>
     <% }); %>
     </ul>
     <a href="/new">Add a new message</a>

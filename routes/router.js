@@ -21,6 +21,11 @@ router.get('/', (req, res) => {
 router.get('/new', (req, res) => {
   res.render('form', {});
 });
+router.get('/message/:messageId', (req, res) => {
+  res.render('message', {
+    message: messages[Number(req.params.messageId)],
+  });
+});
 
 router.post('/new', (req, res) => {
   messages.push({
