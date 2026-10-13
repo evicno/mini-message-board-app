@@ -22,9 +22,14 @@ router.get('/new', (req, res) => {
   res.render('form', {});
 });
 router.get('/message/:messageId', (req, res) => {
-  res.render('message', {
-    message: messages[Number(req.params.messageId)],
-  });
+  const id = Number(req.params.messageId);
+  if (!Number.isInteger(id) || id < 0 || id >= messages.length) {
+    res.status(404).send('Message not found');
+  } else {
+    res.render('message', {
+      message: messages[id],
+    });
+  }
 });
 
 router.post('/new', (req, res) => {

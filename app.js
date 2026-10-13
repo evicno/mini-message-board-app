@@ -10,6 +10,9 @@ app.set('view engine', 'ejs');
 app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
 app.use('/', router);
+app.use((req, res) => {
+  res.status(404).send('Page not found');
+});
 
 app.use((err, req, res, next) => {
   console.error(err);
